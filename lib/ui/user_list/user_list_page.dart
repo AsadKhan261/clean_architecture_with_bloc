@@ -1,6 +1,6 @@
-import 'package:clean_architecture_with_bloc/user_list_cubit.dart';
-import 'package:clean_architecture_with_bloc/user_list_state.dart';
-import 'package:clean_architecture_with_bloc/widgets/user_list_card.dart';
+import 'package:clean_architecture_with_bloc/ui/user_list/user_list_cubit.dart';
+import 'package:clean_architecture_with_bloc/ui/user_list/user_list_state.dart';
+import 'package:clean_architecture_with_bloc/ui/widgets/user_list_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,6 +23,9 @@ class _UsersListPageState extends State<UsersListPage> {
           bloc: BlocProvider.of<UserListCubit>(context),
           builder: (context, state) {
             final userState = state as UserListState;
+            if (userState.error != null) {
+              return Text(userState.error.toString());
+            }
             return userState.isLoading
                 ? const CircularProgressIndicator()
                 : ListView(

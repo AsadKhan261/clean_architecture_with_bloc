@@ -1,8 +1,8 @@
-import 'package:clean_architecture_with_bloc/user_json.dart';
 import 'package:flutter/material.dart';
+import '../../domain/entities/user_entity.dart';
 
 class UserCard extends StatelessWidget {
-  final UserJson user;
+  final UserEntity user;
 
   const UserCard({
     Key? key,
